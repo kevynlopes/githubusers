@@ -1,0 +1,40 @@
+h1,
+h2,
+ul,
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  width: 90px;
+  height: 20px;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  margin-top: -30px;
+}
+
+.container button {
+  margin-top: 10px;
+  margin-left: 55px;
+}
+
+.container img {
+  max-width: 200px;
+}
+
+.perfil_info {
+  margin-top: 60px;
+  display: grid;
+  justify-content: center;
+}

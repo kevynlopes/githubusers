@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Github</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <script src="vue.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <img src="github.jpg" alt="">
+      <h2>Pesquisar perfil</h2>
+    <input class="texto" type="text" v-model="user">
+    <button @click.prevent="puxarApi">Enviar</button>
+  </div>
+    <div class="perfil_info" v-if="perfil">
+      {{resultado}} <br> <br>
+      <img class="perfil_imagem" :src="perfil.avatar_url" alt="">
+      Login: {{perfil.login}} <br>
+      ID: {{perfil.id}} <br>
+      Bio: {{perfil.bio}} <br>
+      Location: {{perfil.location}}
+    </div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        perfil: '',
+        user: '',
+        resultado: 'Aqui está o resultado da sua pesquisa:'
+
+      },
+      methods: {
+        puxarApi() {
+          fetch(`https://api.github.com/users/${this.user}`)
+          .then(r => r.json())
+          .then(r => {
+            this.perfil = r
+          })
+        },
+      }
+    });
+  </script>
+</body>
+</html>
